@@ -187,8 +187,9 @@
                             </select>
                             <label for="contact-message">Cuéntanos de tu proyecto</label>
                             <textarea id="contact-message" name="message" rows="3" placeholder="¿Qué tienes en mente?" required></textarea>
-                            <button class="button button-primary form-submit" type="submit">Preparar mensaje <span aria-hidden="true">↗</span></button>
-                            <p class="form-status" id="form-status" role="status" aria-live="polite">Este formulario es una demostración visual: no envía datos. Al conectar un backend se podrán recibir las solicitudes.</p>
+                            <button class="button button-primary form-submit" type="submit">Enviar por WhatsApp <span aria-hidden="true">↗</span></button>
+                            <p class="form-status" id="form-status" role="status" aria-live="polite">Prepararemos un mensaje con tus datos y lo abriremos en WhatsApp para que confirmes el envío.</p>
+                            <a class="whatsapp-fallback" id="whatsapp-fallback" href="#" target="_blank" rel="noopener noreferrer" hidden>Si WhatsApp no se abrió, haz clic aquí.</a>
                         </form>
                     </div>
                 </div>

@@ -66,10 +66,29 @@ contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
     if (!contactForm.reportValidity()) return;
 
-    formStatus.textContent = "¡Gracias! La información quedó validada en esta demostración, pero todavía no se envió. Para recibir solicitudes, hace falta conectar un servicio de correo o backend.";
+    const formData = new FormData(contactForm);
+    const message = [
+        "Hola, TecnoPata. Quisiera solicitar información sobre sus servicios.",
+        "",
+        `Nombre: ${formData.get("name").trim()}`,
+        `Correo: ${formData.get("email").trim()}`,
+        `Servicio de interés: ${formData.get("service").trim()}`,
+        "",
+        "Detalles del proyecto:",
+        formData.get("message").trim()
+    ].join("\n");
+    const whatsappUrl = new URL("https://wa.me/51957927915");
+    whatsappUrl.searchParams.set("text", message);
+
+    const fallbackLink = document.querySelector("#whatsapp-fallback");
+    fallbackLink.href = whatsappUrl.toString();
+    fallbackLink.hidden = false;
+
+    window.open(whatsappUrl.toString(), "_blank", "noopener,noreferrer");
+
+    formStatus.textContent = "El mensaje está preparado en WhatsApp. Revísalo y presiona Enviar en la aplicación para completar el envío.";
     formStatus.classList.remove("is-error");
     formStatus.classList.add("is-success");
-    contactForm.reset();
 });
 
 function setChatOpen(isOpen) {
